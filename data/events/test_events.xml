@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<events>
+    <event source="random" activation_rate="1.0" context="In Space">
+        <title>Test Space Event</title>
+        <description>A test event in space.</description>
+        <choice text="Option 1" outcome="test1" />
+        <choice text="Option 2" outcome="test2" />
+    </event>
+    <event source="location" activation_rate="1.0" context="Docked">
+        <title>Test Dock Event</title>
+        <description>A test event while docked.</description>
+        <choice text="Option A" outcome="testA" />
+        <choice text="Option B" outcome="testB" />
+    </event>
+</events>
