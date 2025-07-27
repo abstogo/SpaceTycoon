@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Tycoon - Python Web Edition</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="game-container">
+        <header id="game-header">
+            <h1>Space Tycoon - Python Web Edition</h1>
+            <div id="game-stats">
+                <div class="stat">
+                    <span class="stat-label">Credits:</span>
+                    <span id="credits" class="stat-value">10000</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Location:</span>
+                    <span id="location" class="stat-value">Port Alpha</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Date:</span>
+                    <span id="date" class="stat-value">1105-001</span>
+                </div>
+            </div>
+        </header>
+        
+        <main id="game-main">
+            <div id="game-canvas-container">
+                <canvas id="game-canvas" width="1024" height="768"></canvas>
+                <div id="python-info">
+                    <h3>Python Backend Status</h3>
+                    <p>This game uses the original Python game logic!</p>
+                    <ul>
+                        <li>✅ Event system from Python</li>
+                        <li>✅ Ship management from Python</li>
+                        <li>✅ Crew system from Python</li>
+                        <li>✅ XML event data loading</li>
+                        <li>✅ All game mechanics preserved</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div id="game-ui">
+                <div id="event-panel" class="ui-panel">
+                    <h3>Events</h3>
+                    <div id="event-log"></div>
+                </div>
+                
+                <div id="ship-panel" class="ui-panel">
+                    <h3>Ship Status</h3>
+                    <div id="ship-info"></div>
+                </div>
+                
+                <div id="crew-panel" class="ui-panel">
+                    <h3>Crew</h3>
+                    <div id="crew-list"></div>
+                </div>
+                
+                <div id="actions-panel" class="ui-panel">
+                    <h3>Actions</h3>
+                    <div id="action-buttons">
+                        <button id="btn-travel" class="action-btn">Travel</button>
+                        <button id="btn-trade" class="action-btn">Trade</button>
+                        <button id="btn-missions" class="action-btn">Missions</button>
+                        <button id="btn-ship" class="action-btn">Ship Management</button>
+                        <button id="btn-crew" class="action-btn">Crew Management</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Event Modal -->
+    <div id="event-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="event-title">Event Title</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="event-description"></div>
+                <div id="event-choices"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Save/Load Buttons -->
+    <div id="save-load-buttons">
+        <button id="btn-save" class="save-btn">💾 Save</button>
+        <button id="btn-load" class="load-btn">📂 Load</button>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/game-client.js') }}"></script>
+    <script>
+        // Initialize the game client when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            window.gameClient = new GameClient();
+            
+            // Add save/load button listeners
+            document.getElementById('btn-save').addEventListener('click', () => {
+                window.gameClient.saveGame();
+            });
+            
+            document.getElementById('btn-load').addEventListener('click', () => {
+                window.gameClient.loadGame();
+            });
+        });
+    </script>
+</body>
+</html>
