@@ -1,0 +1,7 @@
+# Web version requirements
+# For development server
+http-server==14.1.1
+
+# For production deployment (optional)
+# flask==2.3.3
+# gunicorn==21.2.0
